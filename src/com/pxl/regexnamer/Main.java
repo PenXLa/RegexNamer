@@ -47,7 +47,7 @@ public class Main {
                 }
 
                 if (cmd.equals("rename"))
-                    rename(new File("D:\\a\\"),Pattern.compile(matcher.group(1)),matcher.group(2),ff,fd,fc,fp);
+                    rename(new File(".\\"),Pattern.compile(matcher.group(1)),matcher.group(2),ff,fd,fc,fp);
                 else
                     System.out.println("coming soon..");
                 System.out.println("Finished");
@@ -61,7 +61,7 @@ public class Main {
         File[] fs = dir.listFiles();
         for (File f : fs) {
             Matcher matcher = pat.matcher(f.getName());
-            if (matcher.matches()) {//如果符合pattern
+            if (matcher.find()) {//如果符合pattern
                 File newf = new File((f.getParent()+'\\' +matcher.replaceAll(rep)).replace("\\\\","\\"));
                 if (f.isDirectory() && processFolder || f.isFile() && processFile) {
                     if (previewMode) {
